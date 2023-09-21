@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
-export default function FormSection() {
+export default function FormSection({ submitHandler }) {
+  const [text, setText] = useState("");
+
+  const changeHandler = (value) => {
+    setText(value);
+  };
+
   return (
     <View style={styles.containerForm}>
-      <TextInput placeholder="Add your Schudle" style={styles.input} />
-      <Button title="Add" color="#0077c7" />
+      <TextInput
+        placeholder="Add your Schudle"
+        style={styles.input}
+        onChangeText={changeHandler}
+      />
+      <Button title="Add" color="#0077c7" onPress={submitHandler} />
     </View>
   );
 }

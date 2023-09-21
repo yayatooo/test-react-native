@@ -5,7 +5,7 @@ export default function DataSection({ item, onPressHandler }) {
   return (
     <TouchableOpacity>
       <View style={styles.todo}>
-        <Text style={{ fontSize: 15 }}>{item.todo}</Text>
+        <Text style={{ fontSize: 15 }}>{item.text}</Text>
         <TouchableOpacity style={styles.button}>
           <Button
             title="Delete"
