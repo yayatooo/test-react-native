@@ -12,7 +12,7 @@ export default function DataSection({ item, onPressHandler }) {
             color="#ce0000"
             onPress={() => onPressHandler(item.key)}
           />
-          <Button title="Edit" />
+          {/* <Button title="Edit" /> */}
         </TouchableOpacity>
       </View>
     </TouchableOpacity>

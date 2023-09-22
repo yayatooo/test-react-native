@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View, Button, FlatList, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  FlatList,
+  Alert,
+  TextInput,
+} from "react-native";
 import Header from "./components/Header";
 import FormSection from "./components/FormSection";
 import { useState } from "react";
 import DataSection from "./components/DataSection";
-
-// type TodoProps : {
-//   todo: string,
-//   key: number
-// }
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -15,6 +18,12 @@ export default function App() {
     { text: "create an app", key: "2" },
     { text: "play on the switch", key: "3" },
   ]);
+
+  const [text, setText] = useState("");
+
+  const changeHandler = (value) => {
+    setText(value);
+  };
 
   const deleteHandler = (key) => {
     setTodos((prevTodos) => {
@@ -25,16 +34,32 @@ export default function App() {
 
   const submitHandler = (text) => {
     setTodos((prevTodos) => {
-      return [{ text, key: Math.random().toString() }, ...prevTodos];
+      const newTodo = { text, key: Math.random().toString() };
+      return [newTodo, ...prevTodos];
     });
+    setText("");
   };
+
   return (
     <View>
       <View>
         <Header />
       </View>
       <View>
-        <FormSection submitHandler={submitHandler} />
+        {/* <FormSection submitHandler={submitHandler} /> */}
+        <View style={styles.containerForm}>
+          <TextInput
+            placeholder="Add your Schudle"
+            style={styles.input}
+            onChangeText={changeHandler}
+            value={text}
+          />
+          <Button
+            title="Add"
+            color="#0077c7"
+            onPress={() => submitHandler(text)}
+          />
+        </View>
       </View>
       <View>
         <FlatList
@@ -79,5 +104,22 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 15,
+  },
+  containerForm: {
+    flexDirection: "row",
+    backgroundColor: "#e7e7e7f",
+    marginTop: "5%",
+    marginHorizontal: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+  butonStyle: {
+    width: "30%",
+  },
+  input: {
+    width: "100%",
+    padding: 5,
+    backgroundColor: "#e4e4e4",
   },
 });

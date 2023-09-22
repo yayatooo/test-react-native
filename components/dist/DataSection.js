@@ -8,8 +8,7 @@ function DataSection(_a) {
         react_1["default"].createElement(react_native_1.View, { style: styles.todo },
             react_1["default"].createElement(react_native_1.Text, { style: { fontSize: 15 } }, item.text),
             react_1["default"].createElement(react_native_1.TouchableOpacity, { style: styles.button },
-                react_1["default"].createElement(react_native_1.Button, { title: "Delete", color: "#ce0000", onPress: function () { return onPressHandler(item.key); } }),
-                react_1["default"].createElement(react_native_1.Button, { title: "Edit" })))));
+                react_1["default"].createElement(react_native_1.Button, { title: "Delete", color: "#ce0000", onPress: function () { return onPressHandler(item.key); } })))));
 }
 exports["default"] = DataSection;
 var styles = react_native_1.StyleSheet.create({

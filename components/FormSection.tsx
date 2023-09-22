@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
-export default function FormSection({ submitHandler }) {
-  const [text, setText] = useState("");
+export default function FormSection({
+  submitHandler,
+  text,
+  setText,
+  changeHandler,
+}) {
+  // const [text, setText] = useState("");
 
-  const changeHandler = (value) => {
-    setText(value);
-  };
+  // const changeHandler = (value) => {
+  //   setText(value);
+  // };
 
   return (
     <View style={styles.containerForm}>
@@ -14,8 +19,9 @@ export default function FormSection({ submitHandler }) {
         placeholder="Add your Schudle"
         style={styles.input}
         onChangeText={changeHandler}
+        value={setText}
       />
-      <Button title="Add" color="#0077c7" onPress={submitHandler} />
+      <Button title="Add" color="#0077c7" onPress={() => submitHandler(text)} />
     </View>
   );
 }
